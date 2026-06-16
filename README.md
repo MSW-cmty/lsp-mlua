@@ -4,6 +4,8 @@
 # lsp-mlua
 > LSP Clients for mLua
 
+[![CI](https://github.com/MSW-cmty/lsp-mlua/actions/workflows/test.yml/badge.svg)](https://github.com/MSW-cmty/lsp-mlua/actions/workflows/test.yml)
+
 WIP..
 
 ## 🛠️ Contribute
