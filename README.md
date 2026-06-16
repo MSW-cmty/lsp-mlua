@@ -1,2 +1,2 @@
 # lsp-mlua
-lsp-mode ❤️ mlua
+> LSP Clients for mLua
