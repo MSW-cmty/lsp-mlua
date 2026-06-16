@@ -84,6 +84,77 @@
                               "extension/scripts/server/out/languageServer.js")
                      "--stdio")))
 
+(defun lsp-mlua--make-init-options ()
+  "Init options for mLua."
+  `( :capabilities
+     ( :completionCapability ( :codeBlockScriptSnippetCompletion t
+                               :codeBlockBTNodeSnippetCompletion t
+                               :codeBlockComponentSnippetCompletion t
+                               :codeBlockEventSnippetCompletion t
+                               :codeBlockMethodSnippetCompletion t
+                               :codeBlockHandlerSnippetCompletion t
+                               :codeBlockItemSnippetCompletion t
+                               :codeBlockLogicSnippetCompletion t
+                               :codeBlockPropertySnippetCompletion t
+                               :codeBlockStateSnippetCompletion t
+                               :codeBlockStructSnippetCompletion t
+                               :attributeCompletion t
+                               :eventMethodCompletion t
+                               :overrideMethodCompletion t
+                               :overridePropertyCompletion t
+                               :annotationCompletion t
+                               :keywordCompletion t
+                               :luaCodeCompletion t
+                               :commitCharacterSupport t)
+       :definitionCapability []
+       :diagnosticCapability ( :needExtendsDiagnostic t
+                               :notEqualsNameDiagnostic t
+                               :duplicateLocalDiagnostic t
+                               :introduceGlobalVariableDiagnostic t
+                               :parseErrorDiagnostic t
+                               :annotationParseErrorDiagnostic t
+                               :unavailableAttributeDiagnostic t
+                               :unavailableTypeDiagnostic t
+                               :unresolvedMemberDiagnostic t
+                               :unresolvedSymbolDiagnostic t
+                               :assignTypeMismatchDiagnostic t
+                               :parameterTypeMismatchDiagnostic t
+                               :deprecatedDiagnostic t
+                               :overrideMemberMismatchDiagnostic t
+                               :unavailableOptionalParameterDiagnostic t
+                               :unavailableParameterNameDiagnostic t
+                               :invalidAttributeArgumentDiagnostic t
+                               :notAllowPropertyDefaultValueDiagnostic t
+                               :assignToReadonlyDiagnostic t
+                               :needPropertyDefaultValueDiagnostic t
+                               :notEnoughArgumentDiagnostic t
+                               :tooManyArgumentDiagnostic t
+                               :duplicateMemberDiagnostic t
+                               :cannotOverrideMemberDiagnostic t
+                               :tableKeyTypeMismatchDiagnostic t
+                               :duplicateAttributeDiagnostic t
+                               :invalidEventHandlerParameterDiagnostic t
+                               :unavailablePropertyNameDiagnostic t
+                               :annotationTypeNotFoundDiagnostic t
+                               :annotationParamNotFoundDiagnostic t
+                               :unbalancedAssignmentDiagnostic t
+                               :unexpectedReturnDiagnostic t
+                               :needReturnDiagnostic t
+                               :duplicateParamDiagnostic t
+                               :returnTypeMismatchDiagnostic t
+                               :expectedReturnValueDiagnostic t)
+       :documentSymbolCapability []
+       :hoverCapability []
+       :referenceCapability []
+       :semanticTokensCapability []
+       :signatureHelpCapability []
+       :typeDefinitionCapability []
+       :renameCapability []
+       :inlayHintCapability []
+       :documentFormattingCapability []
+       :documentRangeFormattingCapability []
+       )))
+
 (lsp-register-client
  (make-lsp-client
   :new-connection
@@ -97,6 +168,7 @@
   :add-on? t
   :multi-root lsp-mlua-multi-root
   :server-id 'msw.mlua
+  :initialization-options #'lsp-mlua--make-init-options
   :download-server-fn (lambda (_client callback error-callback _update?)
                         (let ((tmp-zip (make-temp-file "ext" nil ".zip")))
                           (delete-file tmp-zip)
