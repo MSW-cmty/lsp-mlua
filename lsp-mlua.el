@@ -90,7 +90,7 @@
   (lsp-stdio-connection
    (lambda () (lsp-mlua-server-command))
    (lambda () (lsp-mlua-server-exists? (lsp-mlua-server-command))))
-  :
+  :langua-id
   :initialization-options
   (lambda ()
     `((capabilities . (completionCapability
