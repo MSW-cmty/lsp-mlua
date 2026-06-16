@@ -6,7 +6,16 @@
 
 [![CI](https://github.com/MSW-cmty/lsp-mlua/actions/workflows/test.yml/badge.svg)](https://github.com/MSW-cmty/lsp-mlua/actions/workflows/test.yml)
 
-WIP..
+## 💾 Quickstart
+
+```elisp
+(use-package lsp-mlua
+  :ensure t
+  :hook (mlua-mode . (lambda ()
+                       (require 'lsp-mlua)
+                       (lsp)))  ; or lsp-deferred
+  )
+```
 
 ## 🛠️ Contribute
 
