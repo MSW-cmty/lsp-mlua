@@ -5,7 +5,7 @@
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/MSW-cmty/lsp-mlua
-;; Version: 0.0.1
+;; Version: 0.1.0
 ;; Package-Requires: ((emacs "29.1") (lsp-mode "6.1"))
 ;; Keywords: convenience lsp
 
@@ -90,16 +90,6 @@
   (lsp-stdio-connection
    (lambda () (lsp-mlua-server-command))
    (lambda () (lsp-mlua-server-exists? (lsp-mlua-server-command))))
-  :langua-id
-  :initialization-options
-  (lambda ()
-    `((capabilities . (completionCapability
-                       . ((codeBlockScriptSnippetCompletion . t)
-                          (codeBlockBTNodeSnippetCompletion . t)
-                          (commitCharacterSupport           . t))
-                       ))
-      (profileMode . :json-false)
-      (stopwatch   . :json-false)))
   :activation-fn (lambda (filename &optional _)
                    (string-match-p "\\.mlua\\'" filename))
   :priority -1
